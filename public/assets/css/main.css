@@ -1,0 +1,23 @@
+.homepage-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8%;
+}
+
+
+.codeExample li {
+    margin-top: 1rem;
+    
+}
+
+
+.bulletList li {
+    margin-top: 1rem;
+}
+
+
+
+
+

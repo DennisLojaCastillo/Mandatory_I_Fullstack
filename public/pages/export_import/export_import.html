@@ -1,0 +1,266 @@
+<h1>Export & Import</h1>
+
+<h2>Eksportering (Exporting)</h2>
+<p>
+  Eksportering i en JavaScript-fil betyder at gøre specifikke dele af filen
+  tilgængelige for andre filer at bruge. Du kan eksportere funktioner,
+  konstanter, klasser, objekter osv. Der er to hovedtyper af eksport: navngivet
+  eksport og standard eksport.
+</p>
+
+<h3>Navngivet eksport:</h3>
+<pre><code>
+  // file.js<br>
+  export const number = 42;<br>
+  export function multiply(x, y) {<br>
+  &nbsp;&nbsp;return x * y;<br>
+  }
+</code></pre>
+
+<h3>Standard eksport:</h3>
+<pre><code>
+  // calculator.js<br>
+  export default class Calculator {<br>
+  &nbsp;&nbsp;add(x, y) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;return x + y;<br>
+  &nbsp;&nbsp;}<br>
+  }
+</code></pre>
+
+<!---------------- Importering (Importing) ---------------->
+
+<h2>Importering (Importing)</h2>
+<p>
+  Importering giver dig mulighed for at bruge eksporterede moduler i en anden
+  JavaScript-fil. Baseret på ovenstående eksempler på eksport, kan du importere
+  dem i en anden fil på følgende måde:
+</p>
+
+<h3>Importere navngivet eksport:</h3>
+<pre><code>
+  // main.js<br>
+  import { number, multiply } from './file.js';<br>
+  console.log(multiply(number, 2)); // 84
+</code></pre>
+
+<h3>Importere standard eksport:</h3>
+<pre><code>
+  // app.js<br>
+  import Calculator from './calculator.js';<br>
+  const calc = new Calculator();<br>
+  console.log(calc.add(2, 3)); // 5
+</code></pre>
+
+<!---------------- "type="module"" Attributten ---------------->
+
+<h2>"type="module"" Attributten</h2>
+<p>
+  For at bruge ES6 moduler direkte i webbrowsere, skal du angive type="module"
+  attributten i &lt;script&gt; tagget i din HTML-fil. Dette fortæller browseren,
+  at scriptet skal behandles som et ES6-modul, hvilket gør det muligt at bruge
+  import og export syntaksen direkte i browseren.
+</p>
+<pre><code>
+  &lt;!DOCTYPE html&gt; <br>
+  &lt;html&gt; <br>
+  &lt;head&gt; <br>
+  &nbsp;&nbsp;&lt;title&gt;ES Module Example&lt;/title&gt; <br>
+  &lt;/head&gt; <br>
+  &lt;body&gt; <br>
+  &nbsp;&nbsp;&lt;script type="module" src="main.js"&gt;&lt;/script&gt; <br>
+  &lt;/body&gt; <br>
+  &lt;/html&gt; <br>
+</code></pre>
+
+<p>
+  Denne praksis understøtter opdeling af JavaScript-kode i mindre, mere
+  håndterbare filer og tillader direkte brug af moduler i klient-side
+  applikationer uden behov for byggeværktøjer som Webpack eller Babel (selvom
+  disse stadig bruges bredt for yderligere funktionalitet og
+  browserkompatibilitet).
+</p>
+
+<!---------------- Commonjs vs. type module in Node.js ---------------->
+
+<h2>Commonjs vs. type module in Node.js</h2>
+
+<p>
+  I Node.js er der to hovedsystemer for modulhåndtering: CommonJS og ES Modules.
+  Disse systemer definerer, hvordan kodefiler eksporterer dele af deres
+  funktionalitet til andre filer og hvordan de importerer sådanne
+  funktionaliteter fra andre filer. Valget mellem CommonJS og ES Modules
+  påvirker, hvordan du strukturerer din kode, samt kompatibilitet og
+  funktionalitet i dine Node.js applikationer.
+</p>
+
+<h3>Eksport med CommonJS:</h3>
+<pre><code>// lib.js
+const add = (a, b) =&gt; a + b;
+module.exports = add;
+</code></pre>
+
+<h3>Import med CommonJS:</h3>
+<pre><code>// app.js
+const add = require('./lib.js');
+console.log(add(1, 2)); // 3
+</code></pre>
+
+<h3>Eksport med ES Modules:</h3>
+<pre><code>// lib.mjs
+export const add = (a, b) =&gt; a + b;
+</code></pre>
+
+<h3>Import med ES Modules:</h3>
+<pre><code>// app.mjs
+import { add } from './lib.mjs';
+console.log(add(1, 2)); // 3
+</code></pre>
+
+<!---------------- Fetching in the client vs. fetching in the backend ---------------->
+
+<h2>Fetching in the client vs. fetching in the backend</h2>
+
+<p>
+  At hente data, eller "fetching", kan udføres både på klient- og server-siden
+  (backend) i en webapplikation, og valget mellem de to afhænger ofte af
+  applikationens behov, arkitektur og sikkerhedskrav. Her er en simpel
+  forklaring på forskellene:
+</p>
+
+<h3>Fetching på Klientsiden</h3>
+<p>
+  Når du henter data på klientsiden, bruger du JavaScript, der kører i brugerens
+  webbrowser, til direkte at anmode om data fra en ekstern server eller API.
+  Dette gøres typisk ved brug af fetch API'et eller biblioteker som Axios.
+  Dataen hentes asynkront, hvilket betyder, at webapplikationen kan fortsætte
+  med at køre og være interaktiv, mens den venter på dataene.
+</p>
+
+<p>
+  <strong
+    >Klient-side Fetching med Fetch API - Klient-side JavaScript, der kører i
+    browseren
+  </strong>
+</p>
+
+<pre><code>
+  fetch('https://api.example.com/data')<br>
+    .then(response =&gt; {<br>
+      if (!response.ok) {<br>
+        throw new Error('Network response was not ok');<br>
+      }<br>
+      return response.json(); // Parser svaret som JSON<br>
+    })<br>
+    .then(data =&gt; {<br>
+      console.log(data); // Viser de hentede data i konsollen<br>
+    })<br>
+    .catch(error =&gt; {<br>
+      console.error('Fetching error:', error);<br>
+    });<br>
+  </code></pre>
+
+<h3>Fetching på Serversiden (Backend)</h3>
+<p>
+  Når du henter data på serveren, sker det gennem kode, der kører på din server
+  (for eksempel Node.js). Serveren anmoder om data fra en ekstern server eller
+  database og sender derefter dataene til klienten som en del af serverens
+  respons.
+</p>
+
+<p>
+  <strong
+    >Server-side Fetching med Node.js og Axios - Server-side Node.js
+  </strong>
+</p>
+
+<pre><code>
+  const axios = require('axios');<br>
+  <br>
+  axios.get('https://api.example.com/data')<br>
+    .then(response =&gt; {<br>
+      console.log(response.data); // Viser de hentede data i konsollen<br>
+    })<br>
+    .catch(error =&gt; {<br>
+      console.error('Fetching error:', error);<br>
+    });
+  </code></pre>
+
+<!---------------- Structuring HTML with semantic HTML (header, main, footer) ---------------->
+
+<h2>Structuring HTML with semantic HTML (header, main, footer)</h2>
+
+<p>
+  Semantisk HTML er brugen af HTML-markeringer til nøjagtigt at beskrive
+  formålet med de elementer, der udgør en websides struktur. Det hjælper med at
+  gøre indholdet mere tilgængeligt for både brugere og søgemaskiner, forbedrer
+  SEO, og gør det lettere for skærmlæsere at navigere på siden. Ved at anvende
+  semantiske tags såsom <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>,
+  og <code>&lt;footer&gt;</code>, kan udviklere give en klar betydning til
+  forskellige dele af en webside. Lad os se, hvordan disse kan bruges:
+</p>
+
+<h2><code>&lt;header&gt;</code></h2>
+
+<p>
+  <code>&lt;header&gt;</code> elementet repræsenterer en gruppe af indledende
+  eller navigationshjælpemidler. Det kan indeholde ting som en websides logo,
+  titel, navigationslinks, og søgefelter. <code>&lt;header&gt;</code> elementet
+  bruges typisk øverst på siden, men det kan også bruges i andre kontekster,
+  såsom indenfor <code>&lt;article&gt;</code> eller
+  <code>&lt;section&gt;</code> elementer for at angive en specifik dels header.
+</p>
+
+<pre><code>&lt;header&gt;
+  &lt;h1&gt;Min Hjemmeside&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#home"&gt;Hjem&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#about"&gt;Om Os&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#contact"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+</code></pre>
+
+<h2><code>&lt;main&gt;</code></h2>
+
+<p>
+  <code>&lt;main&gt;</code> elementet indeholder det primære indhold af en
+  webside. Det er meningen, at dette indhold skal være unikt for den enkelte
+  side og ikke gentages på tværs af sider, som f.eks. sidehoveder, navigation,
+  footers, sidebjælker osv. Kun et <code>&lt;main&gt;</code> element bør være
+  til stede på en webside, og det bør ikke være inde i en
+  <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>,
+  <code>&lt;footer&gt;</code>, <code>&lt;header&gt;</code>, eller
+  <code>&lt;nav&gt;</code> element.
+</p>
+
+<pre><code>&lt;main&gt;
+  &lt;article&gt;
+    &lt;h2&gt;Artikel Titel&lt;/h2&gt;
+    &lt;p&gt;Dette er teksten i artiklen.&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+</code></pre>
+
+<h2><code>&lt;footer&gt;</code></h2>
+
+<p>
+  <code>&lt;footer&gt;</code> elementet bruges til at indeholde en footer for en
+  webside eller en sektion af en side. Det kan indeholde information som
+  ophavsret, kontaktinformation, links til privatlivspolitikker, social media
+  ikoner, og mere.
+</p>
+
+<pre><code>&lt;footer&gt;
+  &lt;p&gt;Ophavsret © 2024 Min Hjemmeside&lt;/p&gt;
+  &lt;a href="#privacy-policy"&gt;Privatlivspolitik&lt;/a&gt;
+&lt;/footer&gt;
+</code></pre>
+
+
+<p>
+  Ved at bruge semantiske HTML-elementer kan du skabe klare og tilgængelige
+  websider, som er lette for brugere at navigere og for søgemaskiner at
+  indeksere.
+</p>

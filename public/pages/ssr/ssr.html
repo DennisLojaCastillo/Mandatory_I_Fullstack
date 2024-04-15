@@ -1,0 +1,102 @@
+<h1>Server-side vs. Client-side / Server-side Rendering (SSR)</h1>
+
+<p>
+  I webudvikling spiller både serveren og klienten en afgørende rolle. Serveren
+  står for at levere indhold og funktioner, mens klienten sørger for interaktion
+  og dynamik for at gøre brugeroplevelsen mere engagerende.
+</p>
+
+<h2>Server-side</h2>
+<p>
+  Serversiden er alt det, der foregår på webserveren, før indholdet når
+  brugerens browser. Det handler om at skabe websider, håndtere data og sikre,
+  at brugere er autentificerede. Serveren sørger for alt det komplekse arbejde
+  med data og sikkerhed, inden den sender det færdige resultat til brugeren
+  gennem deres browser. Typiske serversprog omfatter PHP, Python (med Django
+  eller Flask) og JavaScript (Node.js).
+</p>
+
+<h2>Client-side</h2>
+<p>
+  Klientsiden handler om alt det spændende, der foregår i din browser, når den
+  får data eller kode fra serveren. Det inkluderer at vise HTML og CSS, samt at
+  køre JavaScript for at skabe interaktive og dynamiske oplevelser. Det fede ved
+  klientsiden er, at alting foregår på din egen enhed, så webapps kan reagere
+  lynhurtigt på det, du foretager dig, uden at bede serveren om hjælp hele
+  tiden.
+</p>
+
+<h2>Server-side Rendering (SSR)</h2>
+<p>
+  Server-baseret rendering (SSR) er en smart teknik i webudvikling, hvor
+  indholdet på en hjemmeside bliver lavet på serveren, før det bliver sendt til
+  brugerens browser som færdigt HTML. Så når en bruger beder om at se en
+  hjemmeside, er det, som om serveren allerede har forberedt det hele - HTML,
+  CSS og sågar noget af informationen - så det kan blive vist med det samme, når
+  det kommer til brugerens enhed. SSR er især nyttig for at gøre sider hurtigere
+  at loade og for at sikre god søgemaskineoptimering (SEO), fordi alt indhold er
+  klart, lige så snart siden bliver indlæst. Det gør det nemmere for
+  søgemaskinerne at finde og indeksere siden.
+</p>
+
+<h2>Reading files</h2>
+<p>
+  At åbne filer er en af de helt basale ting, man gør i programmering, og det
+  har stor betydning for både webudvikling og serveradministration. Det kommer
+  særligt til udtryk, når man snakker om server-side rendering (SSR) kontra
+  client-side rendering (CSR), konfigurationer baseret på filer, og hvordan man
+  bedst håndterer effektiviteten.
+</p>
+
+<h3>Client-side vs. Server-side Redirection</h3>
+<p>
+  Når en computer server skal flytte en forespørgsel et andet sted hen, kigger
+  den typisk i nogle indstillingsfiler eller ruteplaner. Det er vigtigt, især
+  ved server omdirigeringer, hvor serveren vælger det endelige sted for
+  forespørgslen ud fra nogle regler og oplysninger i disse filer.
+</p>
+
+<h3>Server-side Rendering vs. Client-side Rendering</h3>
+<p>
+  Når det kommer til SSR, så er det sådan, at serveren kan skimme igennem filer,
+  der gemmer på skabeloner eller vigtige oplysninger, der skal forberedes inden
+  de sendes videre til brugeren. kan for eksempel betyde, at serveren skal hente
+  oplysninger fra en database eller læse en fil for at samle indholdet sammen,
+  så det endelige HTML-output er klart til at blive vist for brugeren. Når det
+  handler om CSR, så er det mere almindeligt, at filer bliver indlæst via
+  API-kald, efter at siden allerede er blevet åbnet i browseren.
+</p>
+
+<h3>SSR - Fordele og ulemper</h3>
+<p>
+  SSR er teknikken, hvor en server genererer den fulde HTML for en webside i
+  respons til en brugeranmodning, før den sendes til browseren. Dette sikrer, at
+  siden vises hurtigere for brugeren, da browseren ikke skal vente på at hente
+  og eksekvere JavaScript for at renderere indholdet. Dette gør SSR ideel for
+  SEO, da søgemaskinerne let kan crawle og indeksere det server-genererede
+  indhold. Desuden er den første sidevisning ofte hurtigere sammenlignet med
+  CSR, hvilket kan forbedre den samlede brugeroplevelse, især på langsomme
+  netværksforbindelser. Ulemper ved SSR inkluderer dog en højere belastning på
+  serverressourcer, da hver brugeranmodning kræver en ny sidegenerering, hvilket
+  kan føre til øgede responstider under høj belastning. Derudover kan det gøre
+  interaktive webapplikationer mindre responsive, da hver handling, der kræver
+  ny data, potentielt kan kræve en hel sideopfriskning.
+</p>
+
+<h3>CSR - Fordele og ulemeper</h3>
+<p>
+  CSR står for Client-Side Rendering, hvilket betyder, at HTML-generering og
+  indholdsvisning primært sker i brugerens browser ved hjælp af JavaScript. Det
+  betyder, at hjemmesiden bliver super interaktiv og dynamisk, og det føles
+  næsten som at bruge en app, fordi du ikke behøver at genindlæse siden hele
+  tiden. Når først siden er indlæst første gang, kan CSR-applikationer give dig
+  en rigtig god brugeroplevelse, fordi de kan hente og vise nyt indhold uden at
+  skulle genindlæse hele siden. Det gør også, at serveren ikke belastes så
+  meget, fordi den ikke behøver at lave nye sider for hver lille handling, du
+  foretager dig. En ulempe ved CSR er dog, at det kan tage lidt længere tid at
+  indlæse siden i starten, fordi browseren først skal hente, gennemgå og køre
+  JavaScript-koden, før du kan se indholdet. Det kan også have en negativ effekt
+  på SEO, fordi indholdet ikke er så let tilgængeligt for søgemaskinernes
+  crawlers. Derudover kan CSR give udfordringer med at håndtere Cross-Origin
+  Resource Sharing (CORS), når data skal hentes fra andre domæner.
+</p>

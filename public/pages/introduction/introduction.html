@@ -1,0 +1,236 @@
+<h1>Introduktion</h1>
+
+<p>
+  Denne hjemmeside skal bruges som dokumentation for de emner vi har gennemgået
+  og alt hvad vi har lært indtil nu, på dette semester. Hjemmesiden er også en
+  form for portfolio, hvor jeg vil forklare og vise eksempler på de emner vi har gennemgået indtil nu i dette
+  kursus.
+</p>
+
+<h2>Intro til Node.js</h2>
+<h3>Hvad er Node.js?</h3>
+<p>
+  Node.js er et gratis open-source JavaScript-runtime-miljø, der lader os
+  udviklere skabe servere, webapplikationer, kommandolinjeværktøjer og scripts
+  som kan køre på forskellige platforme såsom Windows, Linux, Mac OS X m.m.
+</p>
+
+<h3>Hvordan installerer man det?</h3>
+
+<h4>Trin 1: Download Node.js</h4>
+<p>
+  Du skal starte med at gå ind på https://nodejs.org/en og vælge den version,
+  der passer til dit operativsystem. Det anbefales at vælge LTS-versionen (Long
+  Term Support), da den er mest stabil og testet med npm. Derefter følger du
+  bare anvisningerne, og så er du klar til næste skridt.
+</p>
+
+<h4>Trin 2: Kontrol af version</h4>
+<p>
+  Efter du har gennemført installationen, så er det en rigtig god ide at
+  kontrollere din version af Node.js og npm: Når Node.js er installeret, kan du
+  kontrollere din version ved at køre <code>node -v</code> (viser hvilken
+  version af node du har installeret) og <code>npm -v</code> (viser hvilken
+  version af npm du har installeret) i din terminal eller kommandolinje. Når du
+  har kontrolleret versionen og det hele er korrekt, så kan du komme i gang med
+  dit første projekt.
+</p>
+
+<h3>Fordele ved Node.js</h3>
+
+<h4>Enkel syntaks</h4>
+<p>
+  Node.js har en enkel og intuitiv syntaks, hvilket gør det nemmere at lære og
+  bruge, især hvis man har godt styr på Javascript.
+</p>
+
+<h4>Mulighed for at skalere hurtigt</h4>
+<p>
+  Node.js er asynkron, som betyder at systemet kan håndtere flere forespørgsler
+  på én gang. Det vil sige, at systemet ikke venter på, at
+  Input/Output-operationen er færdiggjort, før en ny anmodning kan behandles.
+  Det er event-drevet hvilket gør det ideelt at udvikle skalerbare
+  webapplikationer, der bruger langt færre ressourcer.
+</p>
+
+<h4>Det er open-source og fleksibel</h4>
+<p>
+  Node.js er open-source, som betyder, at det er gratis og super fleksibel,
+  fordi det kan tilpasses afhængig hvilket projekt man gerne vil udvikle.
+</p>
+
+<!---------------- Variabler og datatyper ---------------->
+
+<h2>Variabler og datatyper</h2>
+
+<h3>Variabler</h3>
+
+<p>
+  Variabler i JavaScript er brugt til at gemme og håndtere data. De er
+  dynamiske, hvilket betyder, at de kan holde forskellige datatyper over tid.
+  Javascript understøtter otte datatyper: String, Number, BigInt, Boolean,
+  Undefined, Null, Symbol, og Object. Der kommer en lille forklaring på
+  datatyper nedenfor. Variabler kan oprettes ved hjælp af
+  <code>var, let, eller const.</code> I dette fag bruger <code>const</code> som
+  default f.eks <code>const myName = "Dennis";</code>
+</p>
+
+<p>
+  <code>const</code> er konstant og <strong>ikke</strong> i værdien men i
+  tildelingen, hvilket betyder, at den ikke kan omplaceres og derfor også skal
+  være tildelt. Vi skal til enhver tid, hvis det er muligt bruge
+  <code>const</code> og <code>const</code> kan ikke være uangivet eller
+  genangivet, men dens værdi kan ændres, så længe du ikke ændrer opgaven.
+</p>
+
+<h4>Det man aldrig må gøre, når man definerer en variabel.</h4>
+<p><pre><code>totalGlobalVariable = "Never EVER!!! do this!!!"; </code></pre></p>
+<p><pre><code> var globalVariable = "Also NEVER ever do this!!!";</code></pre></p>
+
+<h3>Datatyper</h3>
+
+<p>
+  I JavaScript er variabler dynamiske, hvilket betyder, at samme variabel kan
+  bruges til at holde forskellige datatyper. Dette gør JavaScript fleksibelt og
+  giver os udviklere mulighed for at ændre datatypen af en variabel efter behov
+</p>
+
+<h4>JavaScript har otte datatyper:</h4>
+
+<ul>
+  <li>
+    <h5>String: Tekststrenge</h5>
+    <pre>
+      <code>
+        let tekst = "Hello World!";<br />
+        console.log(tekst); // Output: "Hello World!"
+      </code>
+    </pre>
+  </li>
+  <li>
+    <h5>Number: Tal, både heltal og decimaler</h5>
+    <pre>
+      <code>
+        let heltal = 42;<br />
+        let decimaltal = 3.14;<br />
+        console.log(heltal, decimaltal); // Output: 42 3.14
+      </code>
+    </pre>
+  </li>
+  <li>
+    <h5>Boolean: Sand eller falsk</h5>
+    <pre>
+      <code>
+        let sandt = true;<br />
+        let falsk = false;<br />
+        console.log(sandt, falsk); // Output: true false
+      </code>
+    </pre>
+  </li>
+  <li>
+    <h5>Undefined: Variabler uden en værdi har typen undefined</h5>
+    <pre>
+      <code>
+        let undefined;<br />
+        console.log(undefined); // Output: undefined
+      </code>
+    </pre>
+  </li>
+  <li>
+    <h5>Null: Repræsenterer en tom eller ikke-eksisterende værdi</h5>
+    <pre>
+      <code>
+        let tom = null;<br />
+        console.log(tom); // Output: null
+      </code>
+    </pre>
+  </li>
+  <li>
+    <h5>Symbol: Unikke og uforudsigelige værdier</h5>
+    <pre>
+      <code>
+        let symbol1 = Symbol("a");<br />
+        let symbol2 = Symbol("a");<br />
+        console.log(symbol1 === symbol2); // Output: false<br />
+        // Selvom vi gav dem samme navn, er de forskellige
+      </code>
+    </pre>
+  </li>
+  <li>
+    <h5>Object: Samlinger af nøgle-værdi par</h5>
+    <pre>
+      <code>
+        let person = {<br />
+        navn: "Dennis",<br />
+        alder: 28<br />
+        };<br />
+        console.log(person); // Output: { navn: "Dennis", alder: 28 }
+      </code>
+    </pre>
+  </li>
+  <li>
+    <h5>
+      BigInt: Større tal, der kan være større end det maksimale sæt af tal, der
+      kan repræsenteres af Number
+    </h5>
+    <pre>
+      <code>
+        let stortTal = BigInt(9007199254740991); // Eller 9007199254740991n<br />
+        console.log(stortTal); // Output: 9007199254740991n
+      </code>
+    </pre>
+  </li>
+</ul>
+
+<!---------------- REST API Konventioner ---------------->
+
+<h2>REST API Konventioner</h2>
+
+<p>
+  REST API konventioner og bedste praksis omhandler, hvordan man designer og
+  implementerer API'er på en måde, der er intuitiv og let at bruge. Disse
+  principper sikrer, at API'er bliver konsistente, skalerbare og sikre, hvilket
+  gør det nemmere for udviklere at integrere og vedligeholde dem over tid.
+</p>
+
+<h3>Nogle af de vigtigste konventioner:</h3>
+
+<ul class="bulletList">
+  <li>
+    Gør brug af nøgler i stedet for verber i Endpoints. Det vil sige, man bør
+    bruge nøgler, der repræsenterer ressourcer. HTTP-metoder som GET, POST, PUT,
+    PATCH og DELETE skal bruges til at udføre handlinger på disse ressourcer,
+    hvilket effektivt gør dem til verber. Dette gør API'en intuitiv og let at
+    forstå.
+  </li>
+  <li>
+    Undgå at bruge verber i URI'er, som nævnt ovenfor, så vil det være mest
+    passende at bruge nøgler til at repræsentere ressourcer, og det vil ikke
+    være hensigtsmæssigt at inkludere verber i REST URI'er. HTTP-metoder (GET,
+    POST, PUT, DELETE, osv.) bruges til at udføre handlinger på disse
+    ressourcer. Hvis vi bruger verber i URI'en, skaber vi højst sandsynlig en
+    RPC-stil metodeopkald med et JSON eller XML anmodnings-/svarsformat, hvilket
+    ville være forkert at kalde REST.
+  </li>
+  <li>
+    Klare Versionering af REST API’er, så vil du på denne måde ikke tvinge
+    klienter til at migrere til de nye versioner, hvis de vælger ikke at gøre
+    det. Dette gør det muligt for klienter at bruge den version, de er mest
+    komfortable med, uden at risikere at bryde applikationen.
+  </li>
+</ul>
+
+<!---------------- Kode konventioner / Clean code ---------------->
+
+<h2>Kode konventioner / Clean code</h2>
+
+<p>
+  Kode konventioner og Clean Code principper er retningslinjer og bedste praksis
+  for at skrive kode, der ikke kun fungerer effektivt men også at koden er nemt
+  at læse, forstå og arbejde med, både for dig selv og andre udviklere.
+</p>
+
+<p>
+  Ved at følge kodekonventioner og Clean Code principperne, vil det hjælpe med
+  at reducere fejl, hvilket gør det lettere at debugge ens kode for fejl.
+</p>

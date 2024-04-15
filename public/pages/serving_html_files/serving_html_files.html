@@ -1,0 +1,343 @@
+<h1>Serving HTML files</h1>
+
+<h2>Nodemon</h2>
+<p>
+  Nodemon er et værktøj, der hjælper med udviklingen af Node.js-baserede
+  applikationer ved automatisk at genstarte node-applikationen, når filændringer
+  i kataloget bliver opdaget. Det er designet til at spare tid og forbedre
+  produktiviteten ved at fjerne behovet for manuelt at stoppe og genstarte din
+  Node.js-applikation hver gang du foretager ændringer i din kode.
+</p>
+
+<h3>Hvordan virker Nodemon?</h3>
+
+<p>
+  Når Nodemon er startet, overvåger det filerne i det projekt, det kører i, for
+  ændringer. Specifikt kigger det efter ændringer i filer med filendelser som
+  .js, .mjs, .coffee, .litcoffee, og andre, som kan konfigureres. Hvis en
+  ændring opdages, genstarter Nodemon automatisk applikationen ved at stoppe og
+  starte Node.js-processen igen. Dette sikrer, at de seneste ændringer bliver
+  anvendt, og at vi kan se resultaterne med det samme.
+</p>
+
+<h3>Hvordan installeres og bruges Nodemon?</h3>
+<p>
+  Hvis du vil bruge Nodemon i dine projekter, skal du installere det globalt på
+  dit system via npm (Node Package Manager), der leveres med Node.js. Til dette
+  kan du bruge kommandoen nedenfor i din terminal eller kommandoprompt:
+  <code>npm install -g nodemon</code>
+</p>
+
+<p>
+  Når installationen er færdig, er det nemt at starte din applikation med
+  Nodemon. Du skal blot erstatte "node" med "nodemon" i din startkommando. For
+  eksempel, hvis du plejer at starte din app med kommandoen
+  <code>node app.js</code>, skal du nu skrive: <code>nodemon app.js</code>
+</p>
+
+<!---------------- Loops and loop methods in JS. ---------------->
+
+<h2>Loops and loop methods in JS.</h2>
+
+<p>
+  Der er adskillige metoder i JavaScript til at gentage kode under varierende
+  betingelser. Lad os se nærmere på nogle af de mest brugte løkker og
+  loop-metoder, sammen med eksempler på deres anvendelse:
+</p>
+
+<h3>For Loop</h3>
+<p>
+  Udfører en kodeblok et bestemt antal gange, med en initialiseret variabel, en
+  betingelse, og en inkrement/dekrement operation.
+</p>
+<pre>
+  <code>
+    for (let i = 0; i &lt; 5; i++) {<br />
+    &nbsp;&nbsp;console.log(i); // Output: 0, 1, 2, 3, 4<br />
+    }
+  </code>
+</pre>
+
+<h3>While Loop</h3>
+<p>
+  Kører en kodeblok, så længe en specificeret betingelse evalueres til true.
+</p>
+<pre>
+  <code>
+    let i = 0;<br />
+    while (i &lt; 5) {<br />
+    &nbsp;&nbsp;console.log(i); // Output: 0, 1, 2, 3, 4<br />
+    &nbsp;&nbsp;i++;<br />
+    }
+  </code>
+</pre>
+
+<h3>Do-While Loop</h3>
+<p>
+  Ligner en while-løkke, men udfører kodeblokken mindst én gang før betingelsen
+  tjekkes.
+</p>
+<pre>
+  <code>
+    let i = 0;<br />
+    do {<br />
+    &nbsp;&nbsp;console.log(i); // Output: 0<br />
+    &nbsp;&nbsp;i++;<br />
+    } while (i &lt; 1);
+  </code>
+</pre>
+
+<h3>For-In Loop</h3>
+<p>Itererer over alle de opregnelige egenskaber af et objekt.</p>
+<pre>
+  <code>
+    const obj = { a: 1, b: 2, c: 3 };<br />
+    for (let prop in obj) {<br />
+    &nbsp;&nbsp;console.log(`obj.${prop} = ${obj[prop]}`);<br />
+    &nbsp;&nbsp;// Output: "obj.a = 1", "obj.b = 2", "obj.c = 3"<br />
+    }
+  </code>
+</pre>
+
+<h3>For-Of Loop</h3>
+<p>
+  Giver en måde at iterere over værdierne i et itererbart objekt (som arrays
+  eller strings).
+</p>
+<pre>
+  <code>
+    const array = ['a', 'b', 'c'];<br />
+    for (let element of array) {<br />
+    &nbsp;&nbsp;console.log(element); // Output: "a", "b", "c"<br />
+    }
+  </code>
+</pre>
+
+<h3>Array.forEach()</h3>
+<p>Udfører en given funktion én gang for hvert element i et array.</p>
+<pre>
+  <code>
+    const array = ['a', 'b', 'c'];<br />
+    array.forEach(element =&gt; console.log(element));<br />
+    // Output: "a", "b", "c"
+  </code>
+</pre>
+
+<h3>Array.map()</h3>
+<p>
+  Skaber et nyt array med resultaterne af at kalde en forudbestemt funktion på
+  hvert element i det oprindelige array.
+</p>
+<pre>
+  <code>
+    const numbers = [1, 2, 3, 4];<br />
+    const squared = numbers.map(x =&gt; x * x);<br />
+    console.log(squared); // Output: [1, 4, 9, 16]
+  </code>
+</pre>
+
+<!---------------- CRUDable REST API ---------------->
+
+<h2>CRUDable REST API</h2>
+
+<p>
+  Et REST API, der er CRUD-venligt, gør det muligt for brugere at oprette, læse,
+  opdatere og slette data. Disse handlinger giver adgang til ressourcer, som
+  normalt findes i en database, via et brugervenligt interface. Hver handling
+  svarer til en bestemt HTTP-metode.
+</p>
+
+<ul class="bulletList">
+  <li>
+    <strong>Create (Opret):</strong> Oprettelse af en ny ressource. Dette opnås
+    typisk med HTTP POST-metoden.
+  </li>
+  <li>
+    <strong>Read (Læs):</strong> Hentning af en eller flere ressourcer. Dette
+    opnås med HTTP GET-metoden.
+  </li>
+  <li>
+    <strong>Update (Opdater):</strong> Ændring af en eksisterende ressource.
+    Dette gøres ofte med HTTP PUT eller PATCH-metoden, hvor PUT opdaterer hele
+    ressourcen, mens PATCH kun opdaterer delvis.
+  </li>
+  <li>
+    <strong>Delete (Slet):</strong> Fjernelse af en ressource. Dette opnås med
+    HTTP DELETE-metoden.
+  </li>
+</ul>
+
+<p>
+  Et CRUDable REST API design er en populær arkitektur for at bygge skalerbare
+  og fleksible webtjenester, da det giver en intuitiv model for interaktion med
+  datasæt. Ved at følge REST-principper og udnytte HTTP-protokollen giver det en
+  standardiseret måde at manipulere ressourcer på, hvilket gør det nemt for
+  forskellige klienter (som webbrowsere, mobilapps eller andre servere) at
+  interagere med API'et på en ensartet måde.
+</p>
+
+<!---------------- Anatomy of an URL ---------------->
+
+<h2>Anatomy of an URL</h2>
+
+<p>
+  Når vi taler om en URL (Uniform Resource Locator), så snakker vi om
+  opbygningen af hvad der gør en URL funktionel, altså hvilke roller de
+  forskellige dele af en URL spiller i at finde en bestemt ting på internettet.
+  En URL har gerne flere dele, der hver især bidrager med en vigtig funktion:
+</p>
+
+<h3>Scheme/Protocol</h3>
+<p>
+  Angiver den protokol, der skal bruges til kommunikation med ressourcen. De
+  mest almindelige protokoller inkluderer http (HyperText Transfer Protocol),
+  https (HTTP Secure), ftp (File Transfer Protocol), og mailto (for emails).
+</p>
+
+<h3>Subdomain</h3>
+<p>
+  Et valgfrit felt, der tjener som et underdomæne til hoveddomænet. F.eks. www i
+  www.example.com.
+</p>
+
+<h3>Domain Name</h3>
+<p>
+  Domænenavnet identificerer websitet eller serverens unikke navn på
+  internettet. F.eks. example i www.example.com.
+</p>
+
+<h3>Top-Level Domain (TLD)</h3>
+<p>
+  Den højeste niveau i domænenavnsystemet på internettet, som f.eks. .com, .net,
+  .org, eller landspecifikke TLD'er som .dk for Danmark.
+</p>
+
+<h3>Port</h3>
+<p>
+  Et valgfrit nummer, der følger efter domænenavnet, adskilt af et kolon, og
+  angiver den port, som serveren lytter på. Hvis ikke angivet, bruger
+  webbrowsere standardporte, som f.eks. port 80 for http og port 443 for https.
+</p>
+
+<h3>Path</h3>
+<p>
+  Angiver den specifikke ressource på serveren. Stien følger efter domænenavnet
+  (og porten, hvis specificeret) og er adskilt ved skråstreger. F.eks.
+  /products/item1 i www.example.com/products/item1.
+</p>
+
+<h3>Query String</h3>
+<p>
+  En valgfri del, der starter med et spørgsmålstegn ? og kan indeholde en eller
+  flere nøgle-værdi-par, adskilt af &, som giver yderligere information til
+  serveren. F.eks. ?category=books&price=20 i
+  www.example.com/search?category=books&price=20.
+</p>
+
+<h3>Fragment</h3>
+<p>
+  En valgfri del, der starter med en hashmark # og bruges til at referere til en
+  bestemt del af ressourcen, som f.eks. et ankerpunkt på en HTML-side.
+  Fragmentet håndteres af browseren og sendes ikke til serveren. F.eks.
+  #section1 i www.example.com/docs#section1.
+</p>
+
+<h3>En samlet URL ser således ud</h3>
+<code>scheme://subdomain.domain.tld:port/path?querystring#fragment</code>
+
+<h3>Eksempel</h3>
+<p>
+  https://www.example.com:443/products/item1?color=blue&size=medium#details<br />
+  Her angiver https scheme/protokollen, www er subdomænet, example.com er
+  domænenavnet, 443 er porten (som ofte udelades for standardporte),
+  /products/item1 er stien til ressourcen, ?color=blue&size=medium er query
+  string, og #details er fragmentet, der identificerer et specifikt punkt på
+  siden.
+</p>
+
+<!---------------- Serving HTML in Express ---------------->
+
+<h2>Serving HTML in Express</h2>
+
+<h3>At "serve" HTML i Express</h3>
+<p>
+  At "serve" HTML i Express refererer til processen med at sende HTML-filer fra
+  din server til en klientens webbrowser som respons på en forespørgsel.
+  Express, et populært Node.js webapplikationsframework, gør det nemt at
+  håndtere HTTP-forespørgsler og respondere med forskellige typer af indhold,
+  herunder HTML. Her er en simpel forklaring på, hvordan det fungerer:
+</p>
+<p>
+  Når du opretter en webserver med Express, kan du definere ruter, som klienter
+  (typisk webbrowsere) kan anmode om. For hver rute, kan du bestemme, hvilket
+  indhold serveren skal sende tilbage som respons. Når målet er at sende en
+  HTML-fil, kan du bruge Express' indbyggede metoder som
+  <code>res.sendFile()</code> eller <code>res.render()</code>, afhængigt af om
+  du bare ønsker at sende en statisk HTML-fil eller generere HTML-dynamisk ved
+  brug af en skabelonmotor.
+</p>
+
+<h3>Sending af en statisk HTML-fil</h3>
+<p>
+  For at sende en statisk HTML-fil som respons på en forespørgsel, kan du bruge
+  <code>res.sendFile()</code> metoden. Du skal angive den fulde sti til
+  HTML-filen du ønsker at sende. Express har også en hjælpefunktion,
+  <code>express.static()</code>, til at serve alle filer i en mappe som statiske
+  filer, hvilket gør det nemt at håndtere forespørgsler til billeder, CSS og
+  JavaScript filer, der refereres i din HTML.
+</p>
+<pre>
+  <code>
+    const express = require('express');<br />
+    const path = require('path');<br />
+    const app = express();<br />
+    <br />
+    // Serve alle filer i 'public'-mappen som statiske<br />
+    app.use(express.static('public'));<br />
+    <br />
+    app.get('/', (req, res) =&gt; {<br />
+    &nbsp;&nbsp;res.sendFile(path.join(__dirname, '/public/index.html'));<br />
+    });<br />
+    <br />
+    const PORT = 3000;<br />
+    app.listen(PORT, () =&gt; console.log(`Serveren kører på
+    http://localhost:${PORT}`));<br />
+  </code>
+</pre>
+
+<h3>Dynamisk generering af HTML med en templateEngine</h3>
+<p>
+  Hvis man vil generere HTML dynamisk, for eksempel for at inkludere server-side
+  data i din side, kan du bruge en templateEngine som EJS, Handlebars, eller
+  Pug. Først skal du konfigurere Express til at bruge templateEngine, og
+  derefter kan du bruge <code>res.render()</code> metoden til at generere HTML
+  fra dine skabeloner og sende dem som respons.
+</p>
+<pre>
+  <code>
+    const express = require('express');<br />
+    const app = express();<br />
+    <br />
+    // Sætter EJS som skabelonmotor<br />
+    app.set('view engine', 'ejs');<br />
+    <br />
+    app.get('/', (req, res) =&gt; {<br />
+    &nbsp;&nbsp;// Render en EJS-skabelon med titel-data<br />
+    &nbsp;&nbsp;res.render('index', { title: 'Hej Verden!' });<br />
+    });<br />
+    <br />
+    const PORT = 3000;<br />
+    app.listen(PORT, () =&gt; console.log(`Serveren kører på
+    http://localhost:${PORT}`));<br />
+  </code>
+</pre>
+<p>
+  I dette eksempel bruger vi EJS som templateEngine og sender en variabel
+  <em>title</em> til index skabelonen, som derefter kan indsætte værdien
+  dynamisk i HTML-outputtet.
+</p>
+<p>
+  Ved at serve HTML med Express kan du bygge alt fra simple statiske websites
+  til komplekse webapplikationer, der dynamisk genererer indhold baseret på
+  brugerdata eller andre server-side data.
+</p>

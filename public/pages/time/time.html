@@ -1,0 +1,53 @@
+<h1>Time</h1>
+
+<h2>Time</h2>
+<p>
+  For at håndtere tid i JavaScript, kan du bruge Date objektet, som giver
+  metoder til at arbejde med datoer og tider. Her er et eksempel på, hvordan man
+  kan få den aktuelle dato og tid:
+</p>
+<pre>
+  <code>
+    const now = new Date();<br />
+    console.log(now.toString()); // Viser den aktuelle dato og tid som en streng
+  </code>
+</pre>
+<p>
+  Date objektet kan også bruges til at lave specifikke datoer og tider, og
+  manipulere disse (f.eks. tilføje dage, måneder osv.). Det er nyttigt for en
+  lang række opgaver, lige fra at vise datoer og tider på en webside, til at
+  beregne tidsintervaller.
+</p>
+
+<h2>Fetch</h2>
+<p>
+  fetch API'et i JavaScript tillader dig at foretage HTTP-forespørgsler til
+  servere fra en webbrowser. Dette bruges ofte til at anmode om data fra en
+  webserver og indlæse den data ind i en webapplikation uden at genindlæse
+  siden. Her er et grundlæggende eksempel på, hvordan man bruger fetch til at
+  anmode om data:
+</p>
+<pre>
+  <code>
+    fetch('https://api.example.com/data')<br />
+    .then(response =&gt; {<br />
+    if (!response.ok) {<br />
+    throw new Error('Network response was not ok');<br />
+    }<br />
+    return response.json(); // Parser svaret som JSON.<br />
+    })<br />
+    .then(data =&gt; {<br />
+    console.log(data); // Arbejder med den modtagne data<br />
+    })<br />
+    .catch(error =&gt; {<br />
+    console.error('There was a problem with your fetch operation:', error);<br />
+    });
+  </code>
+</pre>
+<p>
+  Dette eksempel viser, hvordan du kan sende en GET-forespørgsel til en URL,
+  parse svaret som JSON, og håndtere eventuelle fejl, der måtte opstå under
+  processen. fetch understøtter også andre HTTP-metoder som POST, PUT, DELETE
+  osv., hvilket gør det til et kraftfuldt værktøj til at interagere med
+  web-API'er.
+</p>

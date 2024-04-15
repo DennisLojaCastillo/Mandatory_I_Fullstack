@@ -1,0 +1,35 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #2B2730;
+    border-radius: 20px;
+    margin-bottom: 1%;
+}
+
+.logo-section img {
+    height: 40px;  /* Adjust the size of the logo as needed */
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0 auto; /* Pushes the nav to the right of the logo */
+    display: flex;
+}
+
+.nav-item {
+    margin-left: 20px;
+}
+
+.nav-item a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+.nav-item a:hover {
+    color: #6528F7;
+    text-decoration: none;
+}

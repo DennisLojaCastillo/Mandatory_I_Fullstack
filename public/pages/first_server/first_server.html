@@ -1,0 +1,375 @@
+<h1>First Server</h1>
+
+<h2>Code conventions / Clean Code (Strict Mode - ESLint)</h2>
+
+<p>
+  Som nævnt tidligere, så er kode konventionerne og Clean Code principperne
+  afgørende for at ens kode er læsbar, effektiv og nemt at vedligeholde. Hvis
+  man gør brug af Strict Mode og værktøjer som ESLint, vil det være nemmere at
+  overholde disse standarder.
+</p>
+
+<h3>Strict Mode</h3>
+<p>
+  <code>"use strict";</code> er en funktion i Javascript, der skal skrives i
+  toppen af ens fil eller funktion. Når man bruger denne funktion, bliver ens
+  kode underlagt ekstra restriktioner, som kan hjælpe med at fange fejl, der
+  ellers kunne være overset. Det betyder, at man kan opdage potentielle
+  problemer tidligere i udviklingsprocessen. Det gør ens kode mere pålidelig og
+  nemmere at fejlsøge. Ved at bruge <code>"use strict"</code> kan man skrive
+  renere og mere sikker kode, hvilket vil give bedre resultater i sidste ende.
+</p>
+
+<h3>ESLint</h3>
+
+<p>
+  ESLint er et værktøj til der hjælper med at finde fejl og rette problemer i
+  ens Javascript kode. Ved at bruge ESLint, så vil man som udvikler sikre, at
+  ens kode overholder kode konventionerne og Clean Code principperne. ESLint er
+  konfigurerbar, hvilket betyder udvikler teams selv kan definere deres egne
+  regelsæt baseret på deres specifikke krav og behov. Den mest almindelig fejl
+  og som jeg selv ofte oplever, er at man nogle gange overser, at der sættes
+  semikolon til sidst. Det kan nogle gange være meget frustrerende, derfor er
+  det et super godt værktøj til at identificere fejl og selv de små fejl.
+</p>
+
+<h4>Fordelene ved at bruge dette værktøj er:</h4>
+
+<ul class="bulletList">
+  <li>
+    Man kan forbedre sin kvalitet af kode, som hjælper med at identificere
+    mønstre, der kan føre til fejl.
+  </li>
+  <li>
+    Der er konsistens, når der bliver skrevet noget kode af forskellige
+    udviklere og det sørger for at man følger de regelsæt og standarder som er
+    blevet defineret.
+  </li>
+  <li>
+    Det vil effektivisere processen, fordi det automatisk hjælper en med at
+    finde og rette almindelige fejl, som resulterer i, at man spare tid under
+    kodegennemgang og fejlfinding.
+  </li>
+</ul>
+
+<!---------------- Variables and Functions ---------------->
+
+<h2>Variables and Functions</h2>
+
+<p>
+  I JavaScript er det essentielt at forstå, hvordan variabler og funktioner
+  bliver tilgængelige i ens kode. Scope er det, der bestemmer, hvor i koden
+  variabler og funktioner kan bruges.
+</p>
+
+<h3>Der findes primært tre typer af scopes.</h3>
+
+<ul class="bulletList">
+  <li>Global scope</li>
+  <li>Function scope</li>
+  <li>Block scope</li>
+</ul>
+
+<h3>Global scope</h3>
+
+<p>
+  Når man definerer en variabel uden for en funktion, så bliver den en del af
+  det globale område. Det betyder, at den kan tilgås og ændres fra alle steder i
+  ens kode.
+</p>
+
+<p><strong>Eksempel</strong></p>
+
+<pre>
+  <code>
+    var globalVar = "Jeg kan tilgås i global scopes";<br />
+    function showGlobal() {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;console.log(globalVar); <br />
+    }<br />
+    showGlobal(); <br />
+    console.log(globalVar);<br />
+  </code>
+</pre>
+
+<h3>Function scope</h3>
+<p>
+  Når man erklærer variabler i en funktion, er de kun tilgængelige inden for den
+  pågældende funktion. Dette kaldes "function scope".
+</p>
+
+<pre>
+  <code>
+    function showLocal() {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;var localVar = "Jeg er lokal og kan kun tilgås inde i
+    funktionen";<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;console.log(localVar);<br />
+    }<br />
+    showLocal();<br />
+    console.log(localVar);<br />
+  </code>
+</pre>
+
+<h3>Block Scope</h3>
+<p>
+  Når man bruger let eller const til at deklarere variabler inden for en blok {}
+  - f.eks. i en if-sætning eller en for-løkke - så er de kun tilgængelige inden
+  for den pågældende blok.
+</p>
+
+<pre>
+  <code>
+    if (true) {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;let blockVar = "Jeg er blok-scoped";<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;console.log(blockVar); <br />
+    }<br />
+  </code>
+</pre>
+
+<!---------------- Functions ---------------->
+
+<h2>Functions</h2>
+
+<p>
+  Når du skriver en funktion, skal du først vælge et navn til den et sæt af
+  parametre, og skrive den kode, der skal udføres, når funktionen bliver brugt.
+</p>
+
+<p><strong>Eksempel</strong></p>
+
+<pre>
+  <code>
+    function hello() {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;return "Hello, World!";<br />
+    }<br />
+    <br />
+    console.log(hello());<br />
+  </code>
+</pre>
+
+<!---------------- Callback functions ---------------->
+
+<h2>Callback functions</h2>
+
+<p>
+  Callback funktioner bruges som argumenter til andre funktioner og kan
+  eksekveres på et senere tidspunkt. Dette gør det muligt at udføre handlinger
+  asynkront, for eksempel håndtere begivenheder eller tilpasse funktionalitet
+  efter behov.
+</p>
+
+<p><strong>Eksempel</strong></p>
+
+<pre>
+  <code>
+    function generiskHandling(navn, handling) {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;return handling(navn);<br />
+    }<br />
+    <br />
+    // Her bliver der defineret en række callback-funktioner<br />
+    const svømmer = (navn) =&gt; `${navn} svømmer.`;<br />
+    const læser = (navn) =&gt; `${navn} læser en bog.`;<br />
+    const sover = (navn) =&gt; `${navn} sover.`;<br />
+    <br />
+    // Udfører generiskHandling med forskellige callbacks<br />
+    const svømmerResultat = generiskHandling("Dennis", svømmer);<br />
+    const læserResultat = generiskHandling("Dennis", læser);<br />
+    const soverResultat = generiskHandling("Dennis", sover);<br />
+    <br />
+    console.log(svømmerResultat); // Output: "Dennis svømmer."<br />
+    console.log(læserResultat); // Output: "Dennis læser en bog."<br />
+    console.log(soverResultat); // Output: "Dennis sover."<br />
+    <br />
+    // Bruger en inline callback-funktion direkte som argument<br />
+    console.log(generiskHandling("Dennis", (navn) =&gt; `${navn} spiser.`));
+    <br />
+    // Output: "Dennis spiser."<br />
+  </code>
+</pre>
+
+<!---------------- package.json ---------------->
+
+<h2>package.json</h2>
+
+<h3>HVad er package.json</h3>
+
+<p>
+  package.json er en essentiel fil i vores Node.js projekt som hjælper os med at
+  holde styr på hvilke programmeringspakker(dependencies) vores projekt gør brug
+  af og sikrer, at alle bruger de samme version for at undgå problemer. Filen
+  indeholder også generelle informationer, såsom projektets navn, ejerskab og
+  beskrivelse osv. Man kan også definere forskellige kommandoer for at køre
+  opgaver som at teste eller bygge projekter.
+</p>
+<p>
+  Det vil sige, at en package.json fil er rigtig brugbar for os udvikler, da det
+  er med til at hjælpe med at organisere og gør det super let for os at
+  samarbejde om et projekt.
+</p>
+
+<h3>Hvordan opretter man en package.json fil?</h3>
+<p>
+  For at oprette en package.json fil skal man først sørge for at have Node.js
+  installeret:
+</p>
+
+<h4>1. Naviger hen til projektmappen</h4>
+<p>
+  Åbn en terminal og naviger hen til ens projektmappe. Her kan du gør brug af
+  kommandoen <code>cd</code> for at skifte hen til mappen, hvor dit projekt er.
+</p>
+
+<h4>2. Kør kommandoen</h4>
+<p>
+  Efterfølgende skal du køre kommandoen <code>npm init</code> for at starte
+  processen med at oprette din package.json fil. Når man kører denne kommando,
+  så vil npm stille nogle spørgsmål omkring dit projekt. Det er f.eks.
+  projektets navn, version, beskrivelse osv. Hvis du derimod vil springe
+  spørgsmålene over og gå direkte over til oprette en default fil, så skal du
+  bruge kommandoen <code>npm init -y</code>
+</p>
+
+<h4>3. Installere forskellige dependencies</h4>
+<p>
+  Vi har gjort brug af express i undervisningen og så når vi har installeret
+  express til vores projekt ved at bruge kommandoen
+  <code>npm install express</code> så vil ens package.json fil bliver opdateret
+  og det vil inkludere Express som en afhængighed/dependency og vil samtidig
+  også oprettet ene node_modules mappe til ens projekt, hvor Express og dets
+  afhængigheder vil blive installeret.
+</p>
+
+<h4>4. Klar til at tilpasse efter projekts behov</h4>
+<p>
+  Når du har fået oprettet din package.json har du mulighed for at tilpasse det
+  efter dit behov. Nu kan du manuelt tilføje scripts eller andre afhængigheder i
+  din package.json fil.
+</p>
+
+<p><strong>Eksempel på en default package.json fil</strong></p>
+<pre>
+  <code>
+    {<br />
+    &nbsp;&nbsp;"name": "mit-projekt",<br />
+    &nbsp;&nbsp;"version": "1.0.0",<br />
+    &nbsp;&nbsp;"description": "En kort beskrivelse af mit projekt",<br />
+    &nbsp;&nbsp;"main": "index.js",<br />
+    &nbsp;&nbsp;"scripts": {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;"start": "node index.js"<br />
+    &nbsp;&nbsp;},<br />
+    &nbsp;&nbsp;"author": "Dit Navn",<br />
+    &nbsp;&nbsp;"license": "ISC"<br />
+    }<br />
+  </code>
+</pre>
+
+<!---------------- Express ---------------->
+
+<h2>Express</h2>
+
+<p>
+  Express er et fantastisk redskab til at bygge webservere og API'er med
+  Node.js. Det er kendt for sin hurtighed, enkelhed og skalerbarhed, så du kan
+  fokusere på at kode frem for at bekymre dig om tekniske detaljer. Med Express
+  kan du hurtigt opsætte middleware til at håndtere HTTP-forespørgsler, definere
+  ruter baseret på URL'er og HTTP-metoder, og interagere effektivt med
+  databaser. Det gør udviklingen af web- og mobilapplikationer enklere og mere
+  strømlinet.
+</p>
+
+<h3>Installation af Express</h3>
+<p>
+  Når du har oprettet din projektmappe og initialiseret et nyt node.js projekt.
+  Så skal du bruge kommandoen <code>npm install express</code> og det vil nu
+  automatisk opdatere din package.json og package-lock.json. Det vil også
+  oprette en node_modules mappe, hvis den ikke allerede eksisterer, hvor Express
+  og dets afhængige pakker vil blive installeret.
+</p>
+
+<h3>Fordele ved at bruge Express</h3>
+
+<h4>Simpel og enkelt</h4>
+<p>
+  Når det kommer til bygning af webapplikationer og API'er med Node.js, gør
+  Express det virkelig nemt. Det handler om enkelhed. Du tilføjer kun det, du
+  rent faktisk har brug for, hvilket betyder, at din applikation forbliver let
+  og effektiv.
+</p>
+
+<h4>Fleksibelt</h4>
+<p>
+  Express er virkelig fleksibel på grund af sin enkelhed. Du kan strukturere din
+  applikation på præcis den måde, du vil. Du er ikke låst fast til en bestemt
+  tilgang, så du kan bruge lige præcis de biblioteker, som du bedst kan lide og
+  passer til dit behov.
+</p>
+
+<h4>Middelware</h4>
+<p>
+  Middleware i Express fungerer ved at tillade asynkrone handlinger at udføres i
+  en bestemt rækkefølge, hvilket giver dig kontrol over håndtering af
+  forespørgsler og svar. Det er nyttigt til opgaver som at analysere indgående
+  anmodningsdata, administrere cookies og implementere brugerautentificering.
+</p>
+
+<h4>Routing</h4>
+<p>
+  Med Express kan vi som udviklere nemt definere ruter til at håndtere
+  forskellige HTTP-anmodninger med deres kraftfulde routing API. Dette gør det
+  muligt at opbygge både RESTful web tjenester og applikationer, der følger de
+  seneste webstandarder.
+</p>
+
+<h4>Dokumentation og support</h4>
+<p>
+  Ekspress leveres med en grundig vejledning, som er let at følge, hvilket gør
+  det tilgængeligt for både nybegyndere og erfarne udviklere. Udover dette er
+  der solid support fra fællesskabet gennem platforme som Stack Overflow og
+  GitHub, hvilket effektivt hjælper med at løse problemer i en fart.
+</p>
+
+<!---------------- Sending data with GET request ---------------->
+
+<h2>Sending data with GET request</h2>
+
+<p>
+  Sending af data med GET-forespørgsler er en almindelig praksis i webudvikling,
+  især når det kommer til at anmode om data fra en server. GET-forespørgsler er
+  en af de HTTP-metoder, der anvendes til at anmode om data fra en specifik
+  ressource på internettet. Når du sender data med en GET-forespørgsel,
+  inkluderes dataene i selve URL'en, typisk i form af query-strenge.
+</p>
+
+<h3>Sådan fungerer det</h3>
+
+<h4>URL med Query-strenge</h4>
+<p>
+  Data sendes som en del af URL'en i form af query-strenge. En query-streng
+  starter efter et spørgsmålstegn (?) og består af nøgle-værdi-par, hvor hver
+  nøgle og værdi er adskilt af et lighedstegn (=), og hvert par er adskilt af et
+  ampersand (&). For eksempel:
+  <a href="http://example.com/api/users?name=John&age=30"
+    >http://example.com/api/users?name=John&age=30</a
+  >.
+</p>
+
+<h4>Ingen kropsindhold</h4>
+<p>
+  I modsætning til POST-forespørgsler, som sender data i kroppen af
+  forespørgslen, har GET-forespørgsler ikke en krop. Dette betyder, at al data,
+  der skal sendes, skal inkluderes i URL'en.
+</p>
+
+<h4>Hvordan kan det bruges</h4>
+<h5>Dataanmodninger</h5>
+<p>
+  GET-forespørgsler bruges typisk til at anmode om data baseret på parametre
+  angivet af brugeren. For eksempel kan en søgeside bruge GET-forespørgsler til
+  at anmode om søgeresultater baseret på søgeord angivet af brugeren.
+</p>
+
+<h5>Hente specifikke ressourcer</h5>
+<p>
+  Når du kender identifikatoren for en specifik ressource, kan du bruge en
+  GET-forespørgsel med den pågældende identifikator for at hente den ressource.
+  For eksempel, anmodning om en specifik brugerprofil baseret på brugerens ID.
+</p>
